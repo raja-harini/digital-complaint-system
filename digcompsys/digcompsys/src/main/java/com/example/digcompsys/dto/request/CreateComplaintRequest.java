@@ -1,25 +1,19 @@
-package com.example.digcompsys.dto.response;
+package com.example.digcompsys.dto.request;
 
 import com.example.digcompsys.model.Category;
 import com.example.digcompsys.model.Priority;
-import com.example.digcompsys.model.Status;
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ComplaintResponse {
+public class CreateComplaintRequest {
 
-    private Long complaintId;
     private String title;
     private String description;
     private Category category;
     private Priority priority;
-    private Status status;
-    private LocalDateTime createdAt;
     private Long userId;
 }

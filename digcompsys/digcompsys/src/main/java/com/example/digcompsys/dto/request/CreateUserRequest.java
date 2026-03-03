@@ -1,21 +1,18 @@
-package com.example.digcompsys.dto.response;
+package com.example.digcompsys.dto.request;
 
 import com.example.digcompsys.model.RoleName;
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserResponse {
+public class CreateUserRequest {
 
-    private Long userId;
     private String userName;
+    private String password;
     private String email;
     private String phone;
     private RoleName roleName;
-    private LocalDateTime createdAt;
 }

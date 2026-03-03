@@ -1,12 +1,8 @@
 package com.example.digcompsys.model;
 
-import com.example.digcompsys.model.ComplaintAssignment;
-import com.example.digcompsys.model.StatusHistory;
-import com.example.digcompsys.model.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,21 +11,34 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long teamId;
 
+    @Column(nullable = false, unique = true)
     private String teamName;
+
+    @Column(nullable = false)
     private String contact;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
-    private List<User> users = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "team_lead_id")
+    private User teamLead;
 
-    @OneToMany(mappedBy = "team")
-    private List<ComplaintAssignment> assignments;
+    @ManyToMany
+    @JoinTable(
+            name = "team_employees",
+            joinColumns = @JoinColumn(name = "team_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> employees;
 
-    @OneToMany(mappedBy = "team")
-    private List<StatusHistory> histories;
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Assignment> assignments;
+
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<StatusHistory> statusHistories;
 }

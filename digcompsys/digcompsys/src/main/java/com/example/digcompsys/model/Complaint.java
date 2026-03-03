@@ -2,8 +2,9 @@ package com.example.digcompsys.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "complaints")
@@ -11,38 +12,52 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Complaint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long complaintId;
 
+    @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    private String category;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Category category;
 
-    private String priority;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Priority priority;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Status status;
 
-    @OneToMany(mappedBy = "complaint")
-    @JsonIgnore
-    private List<ComplaintAssignment> assignments;
-
-    @OneToMany(mappedBy = "complaint")
-    private List<StatusHistory> histories;
-
-    @OneToMany(mappedBy = "complaint")
-    private List<Notification> notifications;
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "team_id")
-    private Team team;
+    @OneToMany(mappedBy = "complaint", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<StatusHistory> statusHistories;
 
+    @OneToOne(mappedBy = "complaint", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Assignment assignment;
+
+    @OneToMany(mappedBy = "complaint", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Notification> notifications;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+        if (this.status == null) {
+            this.status = Status.NEW;
+        }
+    }
 }

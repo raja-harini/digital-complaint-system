@@ -1,21 +1,18 @@
 package com.example.digcompsys.repository;
 
-import com.example.digcompsys.model.Complaint;
 import com.example.digcompsys.model.ComplaintAssignment;
-import com.example.digcompsys.model.Team;
-import com.example.digcompsys.model.User;
+import com.example.digcompsys.model.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface ComplaintAssignmentRepository
-        extends JpaRepository<ComplaintAssignment, Long> {
-    List<ComplaintAssignment> findByStatus(String status);
+public interface ComplaintAssignmentRepository extends JpaRepository<ComplaintAssignment, Long> {
 
-    List<ComplaintAssignment> findByUser(User user);
+    List<ComplaintAssignment> findByComplaintComplaintId(Long complaintId);
 
-    List<ComplaintAssignment> findByTeam(Team team);
+    List<ComplaintAssignment> findByTeamTeamId(Long teamId);
 
-    Optional<ComplaintAssignment> findByComplaint(Complaint complaint);
+    List<ComplaintAssignment> findByUserUserId(Long userId);
+
+    List<ComplaintAssignment> findByStatus(Status status);
 }

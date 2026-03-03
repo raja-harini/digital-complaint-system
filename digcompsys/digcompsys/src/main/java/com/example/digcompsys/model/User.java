@@ -2,7 +2,6 @@ package com.example.digcompsys.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,48 +12,46 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User {
-
-    public enum Role {
-        ROLE_ADMIN,
-        ROLE_EMPLOYEE,
-        ROLE_USER
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
 
     @Column(nullable = false)
     private String userName;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Role roleName;
-
     private String password;
 
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false, unique = true)
     private String phone;
 
-    @CreationTimestamp
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RoleName roleName;
+
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Complaint> complaints;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Notification> notifications;
 
-    @OneToMany(mappedBy = "user")
-    private List<StatusHistory> histories;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<StatusHistory> statusHistories;
 
-    @OneToMany(mappedBy = "user")
-    private List<ComplaintAssignment> assignments;
-
-    @ManyToOne
-    @JoinColumn(name = "team_id")
-    private Team team;
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+        if (this.roleName == null) {
+            this.roleName = RoleName.USER;
+        }
+    }
 }
