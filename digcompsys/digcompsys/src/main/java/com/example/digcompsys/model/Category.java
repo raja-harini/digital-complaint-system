@@ -5,5 +5,6 @@ public enum Category {
     SOFTWARE,
     NETWORK,
     SECURITY,
+    ELECTRICITY,
     OTHER
 }

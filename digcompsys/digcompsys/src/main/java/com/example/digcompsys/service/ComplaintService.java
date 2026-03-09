@@ -15,4 +15,6 @@ public interface ComplaintService {
     ComplaintResponse getComplaintById(Long complaintId);
 
     List<ComplaintResponse> getAllComplaints();
+
+    void deleteComplaint(Long complaintId);
 }
