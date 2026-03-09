@@ -7,9 +7,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AssignComplaintRequest {
+public class ReassignRequest {
 
-    private Long complaintId;
-    private Long teamId;
+    private Long assignmentId;
+    private Long newTeamId;
     private Long adminId;
 }

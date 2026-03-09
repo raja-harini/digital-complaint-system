@@ -37,7 +37,7 @@ public class Team {
     private List<User> employees;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Assignment> assignments;
+    private List<ComplaintAssignment> assignments;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StatusHistory> statusHistories;

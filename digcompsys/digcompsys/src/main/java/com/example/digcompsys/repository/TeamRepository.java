@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TeamRepository extends JpaRepository<Team, Long> {
 
-    List<Team> findByTeamLeadUserId(Long userId);
+    List<Team> findByTeamLead_UserId(Long userId);
 }

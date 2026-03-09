@@ -1,10 +1,9 @@
 package com.example.digcompsys.model;
 
 public enum Status {
-    NEW,
+    RAISED,
     ASSIGNED,
     IN_PROGRESS,
-    RESOLVED,
-    REJECTED,
-    CLOSED
+    ESCALATED,
+    RESOLVED
 }

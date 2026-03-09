@@ -48,7 +48,7 @@ public class Complaint {
     private List<StatusHistory> statusHistories;
 
     @OneToOne(mappedBy = "complaint", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Assignment assignment;
+    private ComplaintAssignment assignment;
 
     @OneToMany(mappedBy = "complaint", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Notification> notifications;
@@ -57,7 +57,7 @@ public class Complaint {
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
         if (this.status == null) {
-            this.status = Status.NEW;
+            this.status = Status.RAISED;
         }
     }
 }
