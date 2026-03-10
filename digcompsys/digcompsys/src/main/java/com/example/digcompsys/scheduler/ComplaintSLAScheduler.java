@@ -17,7 +17,8 @@ public class ComplaintSLAScheduler {
     private final StatusHistoryRepository statusHistoryRepository;
     private final NotificationRepository notificationRepository;
 
-    @Scheduled(fixedRate = 3600000)
+//    @Scheduled(fixedRate = 3600000)
+    @Scheduled(fixedRate = 30000)
     public void escalateComplaints() {
 
         List<Complaint> complaints = complaintRepository.findAll();
@@ -26,7 +27,8 @@ public class ComplaintSLAScheduler {
 
             if (complaint.getStatus() != Status.RESOLVED &&
                     complaint.getStatus() != Status.ESCALATED &&
-                    complaint.getCreatedAt().isBefore(LocalDateTime.now().minusHours(48))) {
+//                    complaint.getCreatedAt().isBefore(LocalDateTime.now().minusHours(48))
+                   complaint.getCreatedAt().isBefore(LocalDateTime.now().minusMinutes(1))) {
 
                 Status oldStatus = complaint.getStatus();
 
