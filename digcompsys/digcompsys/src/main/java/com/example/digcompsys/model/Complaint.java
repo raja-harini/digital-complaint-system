@@ -26,7 +26,6 @@ public class Complaint {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Category category;
 
     @Enumerated(EnumType.STRING)

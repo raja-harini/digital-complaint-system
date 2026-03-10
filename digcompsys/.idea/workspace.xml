@@ -7,9 +7,10 @@
     <list default="true" id="5dafb23c-bd85-47f2-8b8b-086f783e0883" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/ComplaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/ComplaintController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/ComplaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/ComplaintService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/ComplaintServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/ComplaintServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/Complaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/Complaint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,29 +52,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.DigcompsysApplication.executor": "Run",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "branch2",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/DIG COMP SYS/digcompsys",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.DigcompsysApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;branch2&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/DIG COMP SYS/digcompsys&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="DigcompsysApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="digcompsys" />

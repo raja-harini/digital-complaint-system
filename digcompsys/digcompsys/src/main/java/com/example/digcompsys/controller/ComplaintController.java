@@ -7,10 +7,13 @@ import com.example.digcompsys.model.Status;
 import com.example.digcompsys.repository.ComplaintRepository;
 import com.example.digcompsys.service.ComplaintService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3306")
 @RestController
 @RequestMapping("/complaints")
 @RequiredArgsConstructor
@@ -20,8 +23,9 @@ public class ComplaintController {
     private final ComplaintRepository complaintRepository;
 
     @PostMapping
-    public ComplaintResponse createComplaint(@RequestBody CreateComplaintRequest request) {
-        return complaintService.createComplaint(request);
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> createComplaint(@RequestBody CreateComplaintRequest request) {
+        return ResponseEntity.ok(complaintService.createComplaint(request));
     }
 
     @GetMapping("/{id}")
