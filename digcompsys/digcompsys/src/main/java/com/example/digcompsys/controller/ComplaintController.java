@@ -4,6 +4,7 @@ import com.example.digcompsys.dto.request.CreateComplaintRequest;
 import com.example.digcompsys.dto.request.UpdateStatusRequest;
 import com.example.digcompsys.dto.response.ComplaintResponse;
 import com.example.digcompsys.model.Status;
+import com.example.digcompsys.repository.ComplaintRepository;
 import com.example.digcompsys.service.ComplaintService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ComplaintController {
 
     private final ComplaintService complaintService;
+    private final ComplaintRepository complaintRepository;
 
     @PostMapping
     public ComplaintResponse createComplaint(@RequestBody CreateComplaintRequest request) {
@@ -33,34 +35,27 @@ public class ComplaintController {
     }
 
     @PutMapping("/{id}/status")
-    public ComplaintResponse updateStatus(@PathVariable Long id,
-                                          @RequestBody UpdateStatusRequest request) {
+    public ComplaintResponse updateStatus(@PathVariable Long id, @RequestBody UpdateStatusRequest request) {
         request.setComplaintId(id);
         return complaintService.updateStatus(request);
     }
 
     @PutMapping("/{id}/escalate")
-    public ComplaintResponse escalateComplaint(@PathVariable Long id) {
-
-        UpdateStatusRequest request = new UpdateStatusRequest();
+    public ComplaintResponse escalateComplaint(@PathVariable Long id, @RequestBody UpdateStatusRequest request) {
         request.setComplaintId(id);
         request.setNewStatus(Status.ESCALATED);
-
         return complaintService.updateStatus(request);
     }
 
     @PutMapping("/{id}/resolve")
-    public ComplaintResponse resolveComplaint(@PathVariable Long id) {
-
-        UpdateStatusRequest request = new UpdateStatusRequest();
+    public ComplaintResponse resolveComplaint(@PathVariable Long id, @RequestBody UpdateStatusRequest request) {
         request.setComplaintId(id);
         request.setNewStatus(Status.RESOLVED);
-
         return complaintService.updateStatus(request);
     }
 
     @DeleteMapping("/{id}")
     public void deleteComplaint(@PathVariable Long id) {
-        complaintService.deleteComplaint(id);
+        complaintRepository.deleteById(id);
     }
 }

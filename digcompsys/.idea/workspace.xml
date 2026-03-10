@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5dafb23c-bd85-47f2-8b8b-086f783e0883" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/config/AdminInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/ComplaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/ComplaintController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/ComplaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/ComplaintService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/ComplaintServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/ComplaintServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

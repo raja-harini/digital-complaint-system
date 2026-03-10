@@ -6,11 +6,7 @@ import com.example.digcompsys.dto.response.ComplaintResponse;
 import com.example.digcompsys.model.*;
 import com.example.digcompsys.repository.*;
 import com.example.digcompsys.service.ComplaintService;
-
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -26,30 +22,19 @@ public class ComplaintServiceImpl implements ComplaintService {
     private final StatusHistoryRepository statusHistoryRepository;
     private final NotificationRepository notificationRepository;
 
-    private User getCurrentUser() {
-
-        Authentication authentication =
-                SecurityContextHolder.getContext().getAuthentication();
-
-        String email = authentication.getName();
-
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-    }
-
     @Override
     public ComplaintResponse createComplaint(CreateComplaintRequest request) {
 
-        User user = getCurrentUser();
+        User user = userRepository.findById(request.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
-        Complaint complaint = Complaint.builder()
-                .title(request.getTitle())
-                .description(request.getDescription())
-                .category(request.getCategory())
-                .priority(request.getPriority())
-                .status(Status.RAISED)
-                .user(user)
-                .build();
+        Complaint complaint = new Complaint();
+        complaint.setTitle(request.getTitle());
+        complaint.setDescription(request.getDescription());
+        complaint.setCategory(request.getCategory());
+        complaint.setPriority(request.getPriority());
+        complaint.setStatus(Status.RAISED);
+        complaint.setUser(user);
 
         complaintRepository.save(complaint);
 
@@ -77,10 +62,11 @@ public class ComplaintServiceImpl implements ComplaintService {
     @Override
     public ComplaintResponse updateStatus(UpdateStatusRequest request) {
 
-        User user = getCurrentUser();
-
         Complaint complaint = complaintRepository.findById(request.getComplaintId())
                 .orElseThrow(() -> new RuntimeException("Complaint not found"));
+
+        User user = userRepository.findById(request.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
         Status oldStatus = complaint.getStatus();
 
@@ -92,14 +78,8 @@ public class ComplaintServiceImpl implements ComplaintService {
                 .user(user)
                 .oldStatus(oldStatus)
                 .newStatus(request.getNewStatus())
-                .escalationTime(
-                        request.getNewStatus() == Status.ESCALATED
-                                ? LocalDateTime.now() : null
-                )
-                .resolutionTime(
-                        request.getNewStatus() == Status.RESOLVED
-                                ? LocalDateTime.now() : null
-                )
+                .escalationTime(request.getNewStatus() == Status.ESCALATED ? LocalDateTime.now() : null)
+                .resolutionTime(request.getNewStatus() == Status.RESOLVED ? LocalDateTime.now() : null)
                 .build();
 
         statusHistoryRepository.save(history);
@@ -132,12 +112,6 @@ public class ComplaintServiceImpl implements ComplaintService {
                 .stream()
                 .map(this::mapToResponse)
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public void deleteComplaint(Long complaintId) {
-
-        complaintRepository.deleteById(complaintId);
     }
 
     private ComplaintResponse mapToResponse(Complaint complaint) {
