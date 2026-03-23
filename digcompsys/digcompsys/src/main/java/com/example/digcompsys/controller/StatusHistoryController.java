@@ -17,9 +17,4 @@ public class StatusHistoryController {
     public StatusHistory createHistory(@RequestBody StatusHistory history) {
         return statusHistoryRepository.save(history);
     }
-
-    @GetMapping("/complaints/{id}/history")
-    public List<StatusHistory> getComplaintHistory(@PathVariable Long id) {
-        return statusHistoryRepository.findByComplaintComplaintId(id);
-    }
 }

@@ -18,4 +18,5 @@ public class UserResponse {
     private String phone;
     private RoleName roleName;
     private LocalDateTime createdAt;
+    private String documentUrl;
 }

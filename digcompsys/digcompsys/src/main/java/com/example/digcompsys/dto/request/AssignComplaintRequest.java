@@ -11,5 +11,4 @@ public class AssignComplaintRequest {
 
     private Long complaintId;
     private Long teamId;
-    private Long adminId;
 }

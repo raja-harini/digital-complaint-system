@@ -1,5 +1,7 @@
 package com.example.digcompsys.controller;
 
+import com.example.digcompsys.model.User;
+import com.example.digcompsys.repository.UserRepository;
 import com.example.digcompsys.security.JwtUtil;
 import lombok.*;
 
@@ -13,6 +15,7 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
+    private final UserRepository userRepository; // ✅ ADD THIS
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) {
@@ -24,7 +27,16 @@ public class AuthController {
                 )
         );
 
-        String token = jwtUtil.generateToken(request.getEmail());
+        // ✅ FETCH USER FROM DB
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // ✅ GENERATE TOKEN WITH ROLE
+        String token = jwtUtil.generateToken(
+                user.getUserId(),
+                user.getEmail(),
+                user.getRoleName().name()
+        );
 
         return new AuthResponse(token);
     }

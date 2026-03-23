@@ -9,6 +9,10 @@ public interface StatusHistoryRepository extends JpaRepository<StatusHistory, Lo
 
     List<StatusHistory> findByComplaintComplaintId(Long complaintId);
 
+    List<StatusHistory> findByComplaintComplaintIdOrderByCreatedAtDesc(Long complaintId);
+
+    List<StatusHistory> findByComplaintComplaintIdOrderByHistoryIdAsc(Long complaintId);
+
     List<StatusHistory> findByUserUserId(Long userId);
 
     List<StatusHistory> findByTeamTeamId(Long teamId);

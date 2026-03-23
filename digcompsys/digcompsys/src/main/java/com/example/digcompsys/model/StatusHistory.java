@@ -1,5 +1,7 @@
 package com.example.digcompsys.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,10 +22,12 @@ public class StatusHistory {
 
     @ManyToOne
     @JoinColumn(name = "complaint_id", nullable = false)
+    @JsonIgnore
     private Complaint complaint;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnoreProperties({"complaints", "notifications", "statusHistories"})
     private User user;
 
     @ManyToOne
@@ -42,6 +46,10 @@ public class StatusHistory {
 
     private LocalDateTime resolutionTime;
 
+    @Column(nullable = false, updatable = false)
+    @Builder.Default
+    private LocalDateTime createdAt = LocalDateTime.now();
+
     @Column(nullable = false)
     private Boolean activeFlag;
 
@@ -49,6 +57,9 @@ public class StatusHistory {
     public void prePersist() {
         if (this.activeFlag == null) {
             this.activeFlag = true;
+        }
+        if (this.createdAt == null) {
+            this.createdAt = LocalDateTime.now();
         }
     }
 }

@@ -6,6 +6,7 @@ import com.example.digcompsys.model.*;
 import com.example.digcompsys.repository.*;
 import com.example.digcompsys.service.ComplaintAssignmentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,7 +27,9 @@ public class ComplaintAssignmentServiceImpl implements ComplaintAssignmentServic
         Team team = teamRepository.findById(request.getTeamId())
                 .orElseThrow(() -> new RuntimeException("Team not found"));
 
-        User admin = userRepository.findById(request.getAdminId())
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User admin = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Admin not found"));
 
         ComplaintAssignment assignment = ComplaintAssignment.builder()

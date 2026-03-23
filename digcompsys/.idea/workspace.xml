@@ -4,7 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dafb23c-bd85-47f2-8b8b-086f783e0883" name="Changes" comment="" />
+    <list default="true" id="5dafb23c-bd85-47f2-8b8b-086f783e0883" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/config/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/EmployeeDetailsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/dto/response/EmployeeDetailsResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/dto/response/NotificationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/EmployeeDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/EmployeeDetailsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/EmployeeDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/EmployeeDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/digcompsys.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/digcompsys.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/ComplaintAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/ComplaintAssignmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/ComplaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/ComplaintController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/StatusHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/StatusHistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/TeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/TeamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/dto/request/AssignComplaintRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/dto/request/AssignComplaintRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/dto/request/CreateComplaintRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/dto/request/CreateComplaintRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/dto/request/UpdateStatusRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/dto/request/UpdateStatusRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/dto/response/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/dto/response/UserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/Complaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/Complaint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/StatusHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/StatusHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/ComplaintRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/ComplaintRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/NotificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/NotificationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/StatusHistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/StatusHistoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/TeamRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/TeamRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/ComplaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/ComplaintService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/ComplaintAssignmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/ComplaintAssignmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/ComplaintServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/ComplaintServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/TeamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/TeamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/digcompsys/src/main/java/com/example/digcompsys/service/impl/UserServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +54,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Exception" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -55,10 +96,10 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;Spring Boot.DigcompsysApplication.executor&quot;: &quot;Run&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;branch2&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;branch3&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/DIG COMP SYS/digcompsys&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/digital_complaint_system/digcompsys&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,

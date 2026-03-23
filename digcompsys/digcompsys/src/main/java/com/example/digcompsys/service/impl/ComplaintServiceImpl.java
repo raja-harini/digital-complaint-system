@@ -7,6 +7,7 @@ import com.example.digcompsys.model.*;
 import com.example.digcompsys.repository.*;
 import com.example.digcompsys.service.ComplaintService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -25,7 +26,11 @@ public class ComplaintServiceImpl implements ComplaintService {
     @Override
     public ComplaintResponse createComplaint(CreateComplaintRequest request) {
 
-        User user = userRepository.findById(request.getUserId())
+        System.out.println("REQUEST: " + request);
+
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Complaint complaint = new Complaint();
@@ -41,7 +46,7 @@ public class ComplaintServiceImpl implements ComplaintService {
         StatusHistory history = StatusHistory.builder()
                 .complaint(complaint)
                 .user(user)
-                .oldStatus(null)
+                .oldStatus(Status.RAISED)
                 .newStatus(Status.RAISED)
                 .build();
 
@@ -52,6 +57,7 @@ public class ComplaintServiceImpl implements ComplaintService {
                 .complaint(complaint)
                 .notificationType(NotificationType.COMPLAINT_SUBMITTED)
                 .message("Complaint raised successfully")
+                .readFlag(false)
                 .build();
 
         notificationRepository.save(notification);
@@ -65,7 +71,9 @@ public class ComplaintServiceImpl implements ComplaintService {
         Complaint complaint = complaintRepository.findById(request.getComplaintId())
                 .orElseThrow(() -> new RuntimeException("Complaint not found"));
 
-        User user = userRepository.findById(request.getUserId())
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User employee = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Status oldStatus = complaint.getStatus();
@@ -75,11 +83,9 @@ public class ComplaintServiceImpl implements ComplaintService {
 
         StatusHistory history = StatusHistory.builder()
                 .complaint(complaint)
-                .user(user)
+                .user(employee)
                 .oldStatus(oldStatus)
                 .newStatus(request.getNewStatus())
-                .escalationTime(request.getNewStatus() == Status.ESCALATED ? LocalDateTime.now() : null)
-                .resolutionTime(request.getNewStatus() == Status.RESOLVED ? LocalDateTime.now() : null)
                 .build();
 
         statusHistoryRepository.save(history);
@@ -108,13 +114,13 @@ public class ComplaintServiceImpl implements ComplaintService {
     @Override
     public List<ComplaintResponse> getAllComplaints() {
 
-        return complaintRepository.findAll()
+        return complaintRepository.findAllByOrderByCreatedAtDesc()
                 .stream()
                 .map(this::mapToResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    private ComplaintResponse mapToResponse(Complaint complaint) {
+    public ComplaintResponse mapToResponse(Complaint complaint) {
 
         return ComplaintResponse.builder()
                 .complaintId(complaint.getComplaintId())

@@ -7,6 +7,7 @@ import com.example.digcompsys.model.User;
 import com.example.digcompsys.repository.UserRepository;
 import com.example.digcompsys.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,13 +18,14 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder; // ✅ ADD THIS
 
     @Override
     public UserResponse createUser(CreateUserRequest request) {
 
         User user = User.builder()
                 .userName(request.getUserName())
-                .password(request.getPassword())
+                .password(passwordEncoder.encode(request.getPassword())) // 🔥 FIX
                 .email(request.getEmail())
                 .phone(request.getPhone())
                 .roleName(request.getRoleName())
@@ -41,7 +43,12 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         user.setUserName(request.getUserName());
-        user.setPassword(request.getPassword());
+
+        // 🔥 encode password ONLY if updated
+        if (request.getPassword() != null && !request.getPassword().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+        }
+
         user.setPhone(request.getPhone());
 
         userRepository.save(user);

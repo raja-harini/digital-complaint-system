@@ -6,6 +6,7 @@ import com.example.digcompsys.model.ComplaintAssignment;
 import com.example.digcompsys.repository.ComplaintAssignmentRepository;
 import com.example.digcompsys.service.ComplaintAssignmentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,9 @@ public class ComplaintAssignmentController {
     private final ComplaintAssignmentRepository assignmentRepository;
 
     @PostMapping("/complaints/{id}/assign")
-    public ComplaintAssignment assignComplaint(@PathVariable Long id, @RequestBody AssignComplaintRequest request) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ComplaintAssignment assignComplaint(@PathVariable Long id,
+                                               @RequestBody AssignComplaintRequest request) {
         request.setComplaintId(id);
         return assignmentService.assignComplaint(request);
     }

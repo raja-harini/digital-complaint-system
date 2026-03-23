@@ -12,6 +12,4 @@ public class UpdateStatusRequest {
 
     private Long complaintId;
     private Status newStatus;
-    private Long userId;
-    private Long teamId;
 }

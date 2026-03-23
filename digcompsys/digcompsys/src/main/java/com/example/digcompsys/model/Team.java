@@ -1,5 +1,6 @@
 package com.example.digcompsys.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,7 +29,7 @@ public class Team {
     @JoinColumn(name = "team_lead_id")
     private User teamLead;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "team_employees",
             joinColumns = @JoinColumn(name = "team_id"),
@@ -37,6 +38,7 @@ public class Team {
     private List<User> employees;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<ComplaintAssignment> assignments;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)

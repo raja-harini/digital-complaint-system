@@ -1,5 +1,7 @@
 package com.example.digcompsys.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,10 +22,12 @@ public class Notification {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "complaint_id", nullable = false)
+    @JsonIgnoreProperties({"notifications", "statusHistories", "assignment"})
     private Complaint complaint;
 
     @Enumerated(EnumType.STRING)

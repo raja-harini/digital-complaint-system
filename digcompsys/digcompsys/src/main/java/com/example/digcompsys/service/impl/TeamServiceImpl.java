@@ -26,14 +26,16 @@ public class TeamServiceImpl implements TeamService {
 
         List<User> employees = userRepository.findAllById(request.getEmployeeIds());
 
-        Team team = Team.builder()
-                .teamName(request.getTeamName())
-                .contact(request.getContact())
-                .teamLead(lead)
-                .employees(employees)
-                .build();
+        Team team = new Team();
+        team.setTeamName(request.getTeamName());
+        team.setContact(request.getContact());
+        team.setTeamLead(lead);
 
-        return teamRepository.save(team);
+        Team savedTeam = teamRepository.save(team);
+
+        savedTeam.setEmployees(employees);
+
+        return teamRepository.save(savedTeam);
     }
 
     @Override
@@ -44,6 +46,6 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public List<Team> getAllTeams() {
-        return teamRepository.findAll();
+        return teamRepository.findAllByOrderByTeamIdDesc();
     }
 }
